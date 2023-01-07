@@ -17,3 +17,4 @@ use App\Http\Controllers\SampleController;
 
 Route::get('/', [PostController::class, 'index']);
 Route::get('/samples', [SampleController::class, 'index2']);
+Route::get('posts/{post}', [PostController::class, 'show']);
