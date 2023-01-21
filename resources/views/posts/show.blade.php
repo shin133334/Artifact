@@ -10,13 +10,12 @@
         
     </head>
     <body class="antialiased">
-        <h1 class="title">
-            {{ $post->title }}
+        <h1 class="name">
+            {{ $subject->name }}
         </h1>
             <div class='content'>
                <div class='content_post'>
-                   <h3>本文</h3>
-                    <h2 class='title'>{{ $post->title }}</h2>
+                    <h2 class='title'>{{ $subject->name }}</h2>
                 </div>             
             </div>
             <div class='footer'>

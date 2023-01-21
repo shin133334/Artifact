@@ -11,15 +11,31 @@
     </head>
     <body class="antialiased">
         <h1>学習管理サイト</h1>
-            <div class='posts'>
-                @foreach($posts as $post)
-                    <div class='post'>
-                        <a href="/posts/{{ $post->id }}">
-                            <h2 class='title'>{{ $post->title }}</h2>
-                        </a>
-                    </div>
+        <table>
+            <div class='subject'>
+                @foreach($subject as $sub)
+                    <td>
+                        <th><a href="/posts/{{ $sub->id }}"><h2 class='name'>{{ $sub->name }}</h2></th></a>
+                        <form action="/posts/{{ $sub->id }}" id="form_{{ $sub->id }}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <th><button type="button" onclick="deletePost({{ $sub->id }})">delete</button></th>
+                        </form>
+                        <th><a href="/posts/create">新しい教科を追加</a></th>
+                    </td>
                 @endforeach
             </div>
-        <div class='paginate'>{{ $posts->links() }}</div>
+        </table>
+        <script>
+            function deletePost(id)
+            {
+                'use strict'
+                
+                if(confirm('削除すると復元できません．\n本当に削除しますか？'))
+                {
+                    document.getElementById(`form_${id}`).submit();
+                }
+            }
+        </script>
     </body>
 </html>

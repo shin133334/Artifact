@@ -6,20 +6,18 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Post extends Model
+class Subject extends Model
 {
     use HasFactory;
     use SoftDeletes;
     
     protected $fillable = [
         'user_id',
-        'title',
-        'body'
+        'name'
         ];
-    
-    public function getPaginateByLimit(int $limit_count = 5)
+        
+    public function getSubjects()
     {
-        return $this->orderby('updated_at', 'DESC')->paginate($limit_count);
+        return $this->orderby('updated_at', 'ASC')->get();
     }
-    
 }
